@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the Composer plugin "composer-dependency-age".
  *
- * Copyright (C) 2025 Konrad Michalik <hej@konradmichalik.dev>
+ * Copyright (C) 2025-2026 Konrad Michalik <hej@konradmichalik.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -104,7 +104,7 @@ class RatingService
 
         $ratings = [];
         foreach ($packages as $index => $package) {
-            if (!($package instanceof Package)) {
+            if (!$package instanceof Package) {
                 throw new ServiceException(sprintf('Invalid package at index %d: expected Package instance, got %s', $index, gettype($package)));
             }
 
@@ -269,9 +269,9 @@ class RatingService
             return '<fg=green>✓</fg=green> mostly current';
         } elseif ($oldPercent >= 30) {
             return '<fg=red>!</fg=red> needs attention';
-        } else {
-            return '<fg=yellow>~</fg=yellow> moderately current';
         }
+
+        return '<fg=yellow>~</fg=yellow> moderately current';
     }
 
     /**
