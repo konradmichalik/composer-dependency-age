@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the Composer plugin "composer-dependency-age".
  *
- * Copyright (C) 2025 Konrad Michalik <hej@konradmichalik.dev>
+ * Copyright (C) 2025-2026 Konrad Michalik <hej@konradmichalik.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -353,11 +353,10 @@ class TableRenderer
             $months = $totalAgeDays / 30.44;
 
             return sprintf('%.1f months', $months);
-        } else {
-            $years = $totalAgeDays / 365.25;
-
-            return sprintf('%.1f years', $years);
         }
+        $years = $totalAgeDays / 365.25;
+
+        return sprintf('%.1f years', $years);
     }
 
     /**
@@ -380,11 +379,10 @@ class TableRenderer
             $months = $totalReductionDays / 30.44;
 
             return sprintf('- %.1f months', $months);
-        } else {
-            $years = $totalReductionDays / 365.25;
-
-            return sprintf('- %.1f years', $years);
         }
+        $years = $totalReductionDays / 365.25;
+
+        return sprintf('- %.1f years', $years);
     }
 
     /**
